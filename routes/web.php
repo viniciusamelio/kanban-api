@@ -17,15 +17,31 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/user','UserController@index');
-$router->get('/user/{id}','UserController@show');
-$router->post('/user','UserController@store');
-$router->put('/user/{id}','UserController@update');
-$router->delete('/user/{id}','UserController@destroy');
 
-$router->get('/board','BoardController@index');
-$router->get('/board/{id}','BoardController@show');
-$router->post('/board','BoardController@store');
-$router->put('/board/{id}','BoardController@update');
-$router->delete('/board/{id}','BoardController@destroy');
+$router->group(['prefix' => 'user'], function () use ($router) {
+    $router->get('/','UserController@index');
+    $router->get('/{id}','UserController@show');
+    $router->post('/','UserController@store');
+    $router->put('/{id}','UserController@update');
+    $router->delete('/{id}','UserController@destroy');
+});
+
+$router->group(['prefix' => 'board'], function () use ($router) {
+    $router->get('/','BoardController@index');
+    $router->get('/{id}','BoardController@show');
+    $router->post('/','BoardController@store');
+    $router->put('/{id}','BoardController@update');
+    $router->delete('/{id}','BoardController@destroy');
+});
+
+$router->group(['prefix' => 'task'], function () use ($router) {
+    $router->get('/','TaskController@index');
+    $router->get('/{id}','TaskController@show');
+    $router->post('/','TaskController@store');
+    $router->put('/{id}','TaskController@update');
+    $router->delete('/{id}','TaskController@destroy');
+});
+
+
+
 
