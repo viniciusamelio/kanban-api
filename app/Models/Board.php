@@ -10,5 +10,9 @@ class Board extends Model{
         'title','description','color','user_id'
     ];
 
+    public function tasks(){
+        return $this->hasMany(\App\Models\Task::class);
+    }
+
     public $timestamps = true;
 }

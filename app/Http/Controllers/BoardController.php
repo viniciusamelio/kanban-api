@@ -20,6 +20,7 @@ class BoardController extends Controller{
     public function show($id, Request $request){
         $board = $this->board->find($id);
         if($board == null) return response(['message'=>'Board não encontrado!'],404);
+        $board['tasks'] = $board->tasks;
         return response($board);
     }
 
