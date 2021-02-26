@@ -26,6 +26,8 @@ class UserController extends Controller
 
         $user = $this->user->find($id);
 
+        if($user == null) return response(['message'=>'Usuário não encontrado!'],404);
+
         return response($user);
     }
 
@@ -52,6 +54,9 @@ class UserController extends Controller
         ]);
 
         $user = $this->user->find($id);
+
+        if($user == null) return response(['message'=>'Usuário não encontrado!'],404);
+        
         $user->update($request->all());
         $user->save();
 
@@ -60,6 +65,7 @@ class UserController extends Controller
 
     public function destroy($id){
         $user = $this->user->find($id);
+        if($user == null) return response(['message'=>'Usuário não encontrado!'],404);
         $user->delete();
         return response(['message'=>'Usuário removido com sucesso!']);
     }

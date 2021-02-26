@@ -19,6 +19,7 @@ class BoardController extends Controller{
 
     public function show($id, Request $request){
         $board = $this->board->find($id);
+        if($board == null) return response(['message'=>'Board não encontrado!'],404);
         return response($board);
     }
 
@@ -41,6 +42,7 @@ class BoardController extends Controller{
             'user_id'=>'required'  
         ]);
         $board = $this->board->find($id);
+        if($board == null) return response(['message'=>'Board não encontrado!'],404);
         $board->update($request->all());
         $board->save();
 
@@ -50,6 +52,7 @@ class BoardController extends Controller{
 
     public function destroy($id){
         $board = $this->board->find($id);
+        if($board == null) return response(['message'=>'Board não encontrado!'],404);
         $board->delete();
 
         return response(['message'=> 'Board removido com sucesso!']);

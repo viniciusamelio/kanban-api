@@ -19,7 +19,7 @@ class TaskController extends Controller{
 
     public function show($id){
         $task = $this->task->find($id);
-        if($task == null) return response(['message'=>'Task alterada não encontrada!'],404);
+        if($task == null) return response(['message'=>'Task não encontrada!'],404);
         return $task;
     }
 
@@ -40,7 +40,7 @@ class TaskController extends Controller{
             'status'=>'required'            
         ]);
         $task = $this->task->find($id);
-        if($task == null) return response(['message'=>'Task alterada não encontrada!'],404);
+        if($task == null) return response(['message'=>'Task não encontrada!'],404);
         $task->update($request->all());
         $task->save();
 
@@ -49,7 +49,7 @@ class TaskController extends Controller{
 
     public function destroy($id){
         $task = $this->task->find($id);
-        if($task == null) return response(['message'=>'Task alterada não encontrada!'],404);
+        if($task == null) return response(['message'=>'Task não encontrada!'],404);
         $task->delete();
         return response(['message'=>'Task removida com sucesso!']);
     }
