@@ -22,3 +22,10 @@ $router->get('/user/{id}','UserController@show');
 $router->post('/user','UserController@store');
 $router->put('/user/{id}','UserController@update');
 $router->delete('/user/{id}','UserController@destroy');
+
+$router->get('/board','BoardController@index');
+$router->get('/board/{id}','BoardController@show');
+$router->post('/board','BoardController@store');
+$router->put('/board/{id}','BoardController@update');
+$router->delete('/board/{id}','BoardController@destroy');
+
