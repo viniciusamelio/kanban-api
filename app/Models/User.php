@@ -22,6 +22,10 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'name', 'email','password','is_active'
     ];
 
+    public function passwordHash(){
+        return $this->password;
+    }
+
     /**
      * The attributes excluded from the model's JSON form.
      *

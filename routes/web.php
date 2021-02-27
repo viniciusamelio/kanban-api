@@ -17,6 +17,8 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+$router->post('/auth','AuthController@authenticate');
+
 
 $router->group(['prefix' => 'user'], function () use ($router) {
     $router->get('/','UserController@index');
