@@ -27,7 +27,8 @@ class TaskController extends Controller{
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
-            'status'=>'required'            
+            'status'=>'required',
+            'board_id'=>'required'
         ]);
         $this->task->create($request->all());
         return response(['message'=>'Task criada com sucesso!'],201);
@@ -37,7 +38,8 @@ class TaskController extends Controller{
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
-            'status'=>'required'            
+            'status'=>'required',
+            'board_id'=>'required'
         ]);
         $task = $this->task->find($id);
         if($task == null) return response(['message'=>'Task não encontrada!'],404);
