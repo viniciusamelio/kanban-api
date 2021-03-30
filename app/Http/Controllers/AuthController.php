@@ -16,7 +16,7 @@ class AuthController extends Controller
         if ($user == null) return response(['message' => 'Usuário não encontrado!'], 404);
         $passwordMatch = $this->comparePassword($user->passwordHash(), $request->only('password')['password']);
         if (!$passwordMatch) return response(['message' => 'Usuário ou senha incorretos!'], 401);
-        return response(['message' => 'Logado com sucesso!']);
+        return response(['message' => 'Logado com sucesso!', 'user'=>$user]);
     }
 
     private function comparePassword($hash, $password): bool
