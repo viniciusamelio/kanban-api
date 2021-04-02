@@ -17,6 +17,14 @@ class BoardController extends Controller{
         return $this->board->all();
     }
 
+    public function indexByUser($id, Request $request){
+        $boards = $this->board->select('*')
+        ->where('user_id','=' ,$id)
+        ->get();
+
+        return response($boards);
+    }
+
     public function show($id, Request $request){
         $board = $this->board->find($id);
         if($board == null) return response(['message'=>'Board não encontrado!'],404);

@@ -30,6 +30,7 @@ $router->group(['prefix' => 'user'], function () use ($router) {
 
 $router->group(['prefix' => 'board'], function () use ($router) {
     $router->get('/','BoardController@index');
+    $router->get('/user/{id}','BoardController@indexByUser');
     $router->get('/{id}','BoardController@show');
     $router->post('/','BoardController@store');
     $router->put('/{id}','BoardController@update');
